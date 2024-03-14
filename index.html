@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator</title>
+  <style>
+    h1 {
+    text-align: center; 
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('https://img.freepik.com/free-photo/back-school-decoration-with-pencils-calculator-space_23-2147662344.jpg'); /* Path to your image */
+     background-size: cover; /* Cover the entire body */
+     background-position: center; /* Center the image */
+     background-repeat: no-repeat;
+
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #result {
+      margin-top: 20px;
+      color: red;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+    <h1>******Age  Calculator ******* </h1>
+  <form id="ageCalculatorForm">
+    <label for="dob">Date of Birth:</label>
+    <input type="text" id="dob" placeholder="DD/MM/YYYY">
+    <button type="button" onclick="calculateAge()">Calculate Age</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    function calculateAge() {
+      var dobInput = document.getElementById('dob').value;
+      var dob = new Date(dobInput);
+      var today = new Date();
+
+      var age = today.getFullYear() - dob.getFullYear();
+      var monthDiff = today.getMonth() - dob.getMonth();
+
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+        age--;
+      }
+
+      document.getElementById('result').innerText = "Your age is: " + age;
+    }
+  </script>
+</body>
+</html>
